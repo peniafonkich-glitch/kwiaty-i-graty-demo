@@ -116,8 +116,8 @@ footer p{max-width:84ch;font-size:13px;color:var(--mute)}
     <div class="tags"><span>kwiaty</span><span>rośliny</span><span>bukiety</span><span>śluby</span><span>antyki</span><span>sztuka</span></div>
   </div>
   <div class="case">
-    <canvas id="cv" role="img" aria-label="Trójwymiarowy zabytkowy wazon z bukietem różowych róż i eukaliptusa. Model wygenerowany komputerowo, nie zdjęcie z kwiaciarni."></canvas>
-    <div class="lab"><b>Eksponat nr 1</b>Wazon z bukietem. Model 3D wygenerowany komputerowo.</div>
+    <canvas id="cv" role="img" aria-label="Trójwymiarowy bukiet różowych piwonii i róż w papierze pakowym. Model wygenerowany komputerowo, nie zdjęcie z kwiaciarni."></canvas>
+    <div class="lab"><b>Eksponat nr 1</b>Bukiet piwonii i róż w papierze. Model 3D wygenerowany komputerowo.</div>
   </div>
 </section>
 
@@ -167,7 +167,7 @@ footer p{max-width:84ch;font-size:13px;color:var(--mute)}
 </main>
 
 <footer>
-  <p>To makieta nowej strony. Nie ma na niej zdjęć kwiaciarni: wazon z bukietem na ekranie to model 3D wygenerowany komputerowo. W pełnej wersji pojawią się prawdziwe zdjęcia, oferta z cenami i godziny otwarcia, za zgodą właścicieli. Teksty, adres, liczby i dane kontaktowe pochodzą z facebookowej strony Kwiaty i Graty Kwiaciarnia. Pozycja na mapie jest przybliżona.</p>
+  <p>To makieta nowej strony. Nie ma na niej zdjęć kwiaciarni: bukiet na ekranie to model 3D wygenerowany komputerowo. W pełnej wersji pojawią się prawdziwe zdjęcia, oferta z cenami i godziny otwarcia, za zgodą właścicieli. Teksty, adres, liczby i dane kontaktowe pochodzą z facebookowej strony Kwiaty i Graty Kwiaciarnia. Pozycja na mapie jest przybliżona.</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -183,16 +183,18 @@ try{var tc=document.createElement('canvas');ok=!!(window.WebGLRenderingContext&&
 if(ok){
  R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.outputEncoding=THREE.sRGBEncoding;
  S=new THREE.Scene();cam=new THREE.PerspectiveCamera(30,1,.1,100);cam.position.set(0,0,8);
- S.add(new THREE.AmbientLight(0xffffff,.8));
- var k=new THREE.DirectionalLight(0xfff3e0,1.4);k.position.set(-3,5,5);S.add(k);
- var r=new THREE.DirectionalLight(0xffd8e0,.8);r.position.set(4,2,-4);S.add(r);
+ R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=.95;
+ S.add(new THREE.HemisphereLight(0xfffaf0,0x8a9070,.75));
+ var k=new THREE.DirectionalLight(0xfff1dc,1.6);k.position.set(-3,5,4);S.add(k);
+ var r=new THREE.DirectionalLight(0xffe2ea,.7);r.position.set(4,2,-4);S.add(r);
+ var f=new THREE.DirectionalLight(0xffffff,.35);f.position.set(0,-2,6);S.add(f);
  pivot=new THREE.Group();S.add(pivot);
- new THREE.GLTFLoader().load('wazon.glb',function(g){var m=g.scene,b=new THREE.Box3().setFromObject(m),sz=b.getSize(new THREE.Vector3()),ct=b.getCenter(new THREE.Vector3());var s=3.4/Math.max(sz.x,sz.y,sz.z);m.scale.setScalar(s);m.position.set(-ct.x*s,-ct.y*s,-ct.z*s);model=m;pivot.add(m);draw()});
+ new THREE.GLTFLoader().load('bukiet.glb',function(g){var m=g.scene,b=new THREE.Box3().setFromObject(m),sz=b.getSize(new THREE.Vector3()),ct=b.getCenter(new THREE.Vector3());var s=3.1/Math.max(sz.x,sz.y,sz.z);m.scale.setScalar(s);m.position.set(-ct.x*s,-ct.y*s,-ct.z*s);model=m;pivot.add(m);draw()});
 }
 function fit(){if(!ok)return;var w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.position.z=8.4;cam.updateProjectionMatrix();draw()}
 if(ok){if(window.ResizeObserver)new ResizeObserver(fit).observe(cv);else addEventListener('resize',fit)}
 var vis=true;if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe($('start'));
-function draw(){if(!model)return;pivot.rotation.y=ry;pivot.rotation.x=.12;pivot.position.y=.15;R.render(S,cam)}
+function draw(){if(!model)return;pivot.rotation.y=ry;pivot.rotation.x=.42;pivot.position.y=.05;R.render(S,cam)}
 var last=performance.now();
 (function loop(now){requestAnimationFrame(loop);var dt=Math.min(.05,(now-last)/1000);last=now;if(!still)ry+=dt*.45;if(vis)draw()})(last);
 
