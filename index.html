@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kwiaty i Graty | kwiaciarnia, antyki i sztuka w Katowicach</title>
+<meta name="description" content="Makieta strony kwiaciarni Kwiaty i Graty z Katowic: kwiaty, rośliny, bukiety, śluby, antyki, sztuka. Wincentego Witosa 19a.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Kierunek: katalog galerii i sklepu z osobliwościami. Mszysta zieleń, eksponat w gablocie, spis jak w katalogu aukcyjnym, wiszące metki.
+   Bez menu na górze: tylko pływający przycisk telefonu. */
+:root{
+  --moss:#d8dcae;
+  --moss-2:#c7cc98;
+  --ink:#23261a;
+  --rose:#b3475f;
+  --paper:#f4f1de;
+  --mute:#5b6040;
+  --gut:clamp(20px,5vw,72px);
+  --hd:'DM Serif Display',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--moss);scroll-behavior:smooth}
+body{font-family:var(--mono);font-size:16px;line-height:1.65;color:var(--ink);background:var(--moss);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-underline-offset:4px}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+h1,h2,h3{font-family:var(--hd);font-weight:400;line-height:.92;letter-spacing:-.01em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+
+/* pływający telefon */
+.fab{position:fixed;right:clamp(14px,3vw,36px);bottom:clamp(14px,3vw,36px);z-index:40;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 24px;border-radius:999px;background:var(--rose);color:#fff;text-decoration:none;font:500 15px var(--mono);letter-spacing:.06em;box-shadow:0 6px 0 var(--ink);border:2px solid var(--ink);transition:transform .15s,box-shadow .15s}
+.fab:hover{transform:translateY(3px);box-shadow:0 3px 0 var(--ink)}
+.fab b{font-weight:500}
+
+/* katalog: nagłówek */
+.cat{display:flex;justify-content:space-between;gap:16px;padding:18px var(--gut);font:500 12px var(--mono);letter-spacing:.2em;text-transform:uppercase;border-bottom:2px solid var(--ink)}
+
+/* hero: dwie linie i gablota */
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,64px);align-items:center;min-height:calc(100vh - 56px);padding:clamp(30px,6vh,70px) var(--gut)}
+.big{position:relative}
+.big h1{font-size:clamp(70px,13vw,210px)}
+.big h1 span{display:block}
+.big h1 .a{font-style:italic;color:var(--rose)}
+.big h1 .b{font-family:var(--mono);font-weight:500;font-size:.5em;letter-spacing:.04em;text-transform:uppercase;line-height:1.1;position:relative;display:inline-block;margin-top:.2em}
+.big h1 .b::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:.1em;background:var(--ink);transform-origin:left;animation:strike 7s ease-in-out infinite}
+@keyframes strike{0%,10%{transform:scaleX(0)}35%,70%{transform:scaleX(1)}95%,100%{transform:scaleX(0);transform-origin:right}}
+.tags{margin-top:clamp(20px,4vh,40px);display:flex;flex-wrap:wrap;gap:10px}
+.tags span{padding:8px 16px;border:2px solid var(--ink);border-radius:999px;font:500 14px var(--mono);letter-spacing:.06em;background:var(--paper)}
+.case{position:relative;border:3px solid var(--ink);border-radius:6px;background:linear-gradient(160deg,#f4f1de,#e6e8c4);aspect-ratio:4/5;box-shadow:12px 12px 0 var(--ink);overflow:hidden}
+.case::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(35,38,26,.45);pointer-events:none;z-index:3}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:2}
+.case .lab{position:absolute;left:24px;right:24px;bottom:22px;z-index:4;background:var(--paper);border:1.5px solid var(--ink);padding:8px 12px;font:400 12px/1.4 var(--mono)}
+.case .lab b{font-weight:500;letter-spacing:.14em;text-transform:uppercase;display:block}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:0}.case{max-width:460px;width:100%;justify-self:center}}
+
+/* spis */
+.sec{padding:clamp(60px,10vh,120px) 0}
+.sec .head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:14px}
+.sec h2{font-size:clamp(46px,7vw,104px)}
+.sec .head p{font:500 12px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.idx{list-style:none}
+.idx li{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:clamp(14px,2.4vh,24px) 0;border-bottom:1.5px solid var(--ink);transition:padding .25s,background .25s}
+.idx li:hover{padding-left:20px;background:var(--moss-2)}
+.idx .n{font:500 14px var(--mono);color:var(--mute)}
+.idx .t{font:italic 400 clamp(36px,6.4vw,92px)/1 var(--hd)}
+.idx .r{font:500 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+@media(max-width:560px){.idx li{grid-template-columns:44px 1fr}.idx .r{display:none}}
+
+/* wiszące metki */
+.hang{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,28px);margin-top:clamp(36px,6vh,60px);padding-top:34px}
+.hang::before{content:"";position:absolute;left:0;right:0;top:20px;height:3px;background:var(--ink)}
+.tag{position:relative;display:block;text-decoration:none;transform-origin:50% 0;animation:swing 5s ease-in-out infinite}
+.tag:nth-child(2){animation-duration:6.2s;animation-delay:-1.4s}
+.tag:nth-child(3){animation-duration:5.6s;animation-delay:-2.6s}
+.tag:nth-child(4){animation-duration:6.8s;animation-delay:-.6s}
+@keyframes swing{0%,100%{transform:rotate(-2.6deg)}50%{transform:rotate(2.6deg)}}
+.tag::before{content:"";position:absolute;left:50%;top:-14px;width:2px;height:22px;background:var(--ink)}
+.tag .card{margin-top:8px;background:var(--paper);border:2.5px solid var(--ink);border-radius:6px 6px 26px 26px;padding:34px 18px 22px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:6px 6px 0 var(--ink);position:relative}
+.tag .card::before{content:"";position:absolute;left:50%;top:10px;width:14px;height:14px;margin-left:-7px;border-radius:50%;border:2.5px solid var(--ink);background:var(--moss)}
+.tag h3{font:italic 400 clamp(30px,3.4vw,46px)/1 var(--hd)}
+.tag small{display:block;margin-top:10px;font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.tag:hover .card{background:#fff}
+@media(max-width:900px){.hang{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:34px}}
+.note{margin-top:34px;font:400 14px var(--mono);color:var(--mute);max-width:70ch}
+
+/* wizyta */
+.visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(24px,5vw,72px);margin-top:clamp(30px,5vh,52px)}
+@media(max-width:860px){.visit{grid-template-columns:1fr}}
+dl{display:grid;grid-template-columns:auto 1fr;gap:14px 26px}
+dt{font:500 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding-top:6px}
+dd{font-size:19px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 22px;border:2px solid var(--ink);border-radius:999px;background:var(--paper);font:500 14px var(--mono);text-decoration:none;letter-spacing:.06em}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.map{border:3px solid var(--ink);border-radius:6px;overflow:hidden;min-height:380px;box-shadow:10px 10px 0 var(--ink)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+footer{padding:30px var(--gut) 100px;border-top:3px solid var(--ink)}
+footer p{max-width:84ch;font-size:13px;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){.tag,.big h1 .b::after{animation:none}.big h1 .b::after{transform:scaleX(0)}*{transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<a class="fab" href="tel:+48322044073" aria-label="Zadzwoń: 32 204 40 73"><b>☎ 32 204 40 73</b></a>
+
+<div class="cat" aria-hidden="true"><span>Katalog nr 1</span><span>Katowice · Witosa 19a</span></div>
+
+<main>
+<section class="hero" id="start">
+  <div class="big">
+    <h1><span class="a">Kwiaty</span><span class="b">i graty</span></h1>
+    <div class="tags"><span>kwiaty</span><span>rośliny</span><span>bukiety</span><span>śluby</span><span>antyki</span><span>sztuka</span></div>
+  </div>
+  <div class="case">
+    <canvas id="cv" role="img" aria-label="Trójwymiarowy zabytkowy wazon z bukietem różowych róż i eukaliptusa. Model wygenerowany komputerowo, nie zdjęcie z kwiaciarni."></canvas>
+    <div class="lab"><b>Eksponat nr 1</b>Wazon z bukietem. Model 3D wygenerowany komputerowo.</div>
+  </div>
+</section>
+
+<section class="sec" id="spis">
+  <div class="wrap">
+    <div class="head"><h2>Spis</h2><p>tak o sobie piszą</p></div>
+    <ul class="idx" aria-label="Spis oferty">
+      <li><span class="n">01</span><span class="t">kwiaty</span><span class="r"></span></li>
+      <li><span class="n">02</span><span class="t">rośliny</span><span class="r"></span></li>
+      <li><span class="n">03</span><span class="t">bukiety</span><span class="r"></span></li>
+      <li><span class="n">04</span><span class="t">śluby</span><span class="r"></span></li>
+      <li><span class="n">05</span><span class="t">antyki</span><span class="r"></span></li>
+      <li><span class="n">06</span><span class="t">sztuka</span><span class="r"></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="swieta" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2>Czekamy na święta</h2><p>z ich wpisu z 14 listopada</p></div>
+    <div class="hang" id="hang"></div>
+    <p class="note">Aktualne ceny i dostępność podaje kwiaciarnia. Kliknij metkę, a otworzy się gotowy e-mail z zapytaniem o tę pozycję.</p>
+  </div>
+</section>
+
+<section class="sec" id="wizyta" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2>Odwiedź nas</h2><p>Katowice</p></div>
+    <div class="visit">
+      <div>
+        <dl>
+          <dt>Adres</dt><dd>ul. Wincentego Witosa 19a<br>Katowice</dd>
+          <dt>Telefon</dt><dd><a href="tel:+48322044073">32 204 40 73</a></dd>
+          <dt>E-mail</dt><dd><a href="mailto:kwiatyigraty.kontakt@gmail.com">kwiatyigraty.kontakt@gmail.com</a></dd>
+          <dt>Opinie</dt><dd>100% poleca, 14 opinii na Facebooku</dd>
+          <dt>Godziny</dt><dd>Podaje kwiaciarnia.</dd>
+        </dl>
+        <div class="btns">
+          <a class="btn" href="https://www.facebook.com/KwiaciarniaKwiatyiGraty/" rel="noopener">Facebook</a>
+          <a class="btn" href="https://www.instagram.com/kwiatyigraty_kwiaciarnia/" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div class="map"><iframe title="Mapa: Kwiaty i Graty, Wincentego Witosa, Katowice" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=18.9620%2C50.2540%2C18.9820%2C50.2640&amp;layer=mapnik&amp;marker=50.2584838%2C18.9721238"></iframe></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>To makieta nowej strony. Nie ma na niej zdjęć kwiaciarni: wazon z bukietem na ekranie to model 3D wygenerowany komputerowo. W pełnej wersji pojawią się prawdziwe zdjęcia, oferta z cenami i godziny otwarcia, za zgodą właścicieli. Teksty, adres, liczby i dane kontaktowe pochodzą z facebookowej strony Kwiaty i Graty Kwiaciarnia. Pozycja na mapie jest przybliżona.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var still=matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* 3D w gablocie: lekki wazon, obraca się sam */
+var cv=$('cv'),ok=false,model=null,pivot,R,S,cam,ry=-.5;
+try{var tc=document.createElement('canvas');ok=!!(window.WebGLRenderingContext&&(tc.getContext('webgl')||tc.getContext('experimental-webgl')))&&window.THREE&&THREE.GLTFLoader}catch(e){}
+if(ok){
+ R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.outputEncoding=THREE.sRGBEncoding;
+ S=new THREE.Scene();cam=new THREE.PerspectiveCamera(30,1,.1,100);cam.position.set(0,0,8);
+ S.add(new THREE.AmbientLight(0xffffff,.8));
+ var k=new THREE.DirectionalLight(0xfff3e0,1.4);k.position.set(-3,5,5);S.add(k);
+ var r=new THREE.DirectionalLight(0xffd8e0,.8);r.position.set(4,2,-4);S.add(r);
+ pivot=new THREE.Group();S.add(pivot);
+ new THREE.GLTFLoader().load('wazon.glb',function(g){var m=g.scene,b=new THREE.Box3().setFromObject(m),sz=b.getSize(new THREE.Vector3()),ct=b.getCenter(new THREE.Vector3());var s=3.4/Math.max(sz.x,sz.y,sz.z);m.scale.setScalar(s);m.position.set(-ct.x*s,-ct.y*s,-ct.z*s);model=m;pivot.add(m);draw()});
+}
+function fit(){if(!ok)return;var w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.position.z=8.4;cam.updateProjectionMatrix();draw()}
+if(ok){if(window.ResizeObserver)new ResizeObserver(fit).observe(cv);else addEventListener('resize',fit)}
+var vis=true;if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe($('start'));
+function draw(){if(!model)return;pivot.rotation.y=ry;pivot.rotation.x=.12;pivot.position.y=.15;R.render(S,cam)}
+var last=performance.now();
+(function loop(now){requestAnimationFrame(loop);var dt=Math.min(.05,(now-last)/1000);last=now;if(!still)ry+=dt*.45;if(vis)draw()})(last);
+
+/* wiszące metki: pozycje z ich wpisu „Czekamy na Święta” (cedr, araukaria, ostrokrzew, wieńce adwentowe) */
+var items=[['Cedr','na święta'],['Araukaria','na święta'],['Ostrokrzew','na święta'],['Wieniec adwentowy','na święta']];
+var hang=$('hang');
+items.forEach(function(it){var a=document.createElement('a');a.className='tag';
+ var body='Dzień dobry,\n\nchcę zapytać o: '+it[0]+'.\nProszę o informację o dostępności i cenie.\n\nPozdrawiam';
+ a.href='mailto:kwiatyigraty.kontakt@gmail.com?subject='+encodeURIComponent('Zapytanie: '+it[0])+'&body='+encodeURIComponent(body);
+ a.innerHTML='<div class="card"><h3>'+it[0]+'</h3><small>'+it[1]+' · zapytaj</small></div>';
+ hang.appendChild(a)});
+})();
+</script>
+<script data-goatcounter="https://penia-demo.goatcounter.com/count" data-goatcounter-settings='{"path":"kwiaty-i-graty"}' async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
